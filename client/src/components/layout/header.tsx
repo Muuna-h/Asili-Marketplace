@@ -57,13 +57,13 @@ export default function Header() {
             </button>
             
             {/* Logo */}
-            <div className="flex-1 text-center lg:text-left">
+            <div className="flex-1 text-left">
               <Link href="/" className="inline-block">
                 <h1 className="font-display font-bold text-2xl md:text-3xl" style={{ color: COLORS.primary }}>
                   ASILI KENYA
                 </h1>
-                <p className="text-xs" style={{ color: COLORS.secondary }}>
-                  Authentic Kenyan Craftsmanship
+                <p className="text-sm font-medium" style={{ color: COLORS.secondary }}>
+                  For Kenya from Kenya
                 </p>
               </Link>
             </div>
