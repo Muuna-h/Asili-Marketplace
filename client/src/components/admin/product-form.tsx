@@ -172,10 +172,20 @@ export default function ProductForm({ productId, isEdit = false }: ProductFormPr
     
     const allImages = getAllImages();
     
-    if (allImages.length === 0) {
+    if (allImages.length < 4) {
       toast({
-        title: "Images Required",
-        description: "Please upload at least one product image.",
+        title: "More Images Required",
+        description: "Please upload at least 4 product images.",
+        variant: "destructive"
+      });
+      setIsLoading(false);
+      return;
+    }
+    
+    if (allImages.length > 7) {
+      toast({
+        title: "Too Many Images",
+        description: "Please upload a maximum of 7 product images.",
         variant: "destructive"
       });
       setIsLoading(false);
@@ -385,7 +395,7 @@ export default function ProductForm({ productId, isEdit = false }: ProductFormPr
               <div>
                 <FormLabel>Product Images</FormLabel>
                 <FormDescription className="mb-2">
-                  Upload up to 5 product images. First image will be the main display image.
+                  Upload 4 to 7 product images. First image will be the main display image.
                 </FormDescription>
                 
                 {/* Display existing images */}

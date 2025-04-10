@@ -57,7 +57,7 @@ export default function Header() {
             </button>
             
             {/* Logo */}
-            <div className="flex-1 text-left">
+            <div className="flex-1 text-center lg:text-center">
               <Link href="/" className="inline-block">
                 <h1 className="font-display font-bold text-2xl md:text-3xl" style={{ color: COLORS.primary }}>
                   ASILI KENYA
