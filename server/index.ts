@@ -1,10 +1,31 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
+import pgSession from "connect-pg-simple";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { pool } from "./db";
+
+// Initialize PostgreSQL session store
+const PgStore = pgSession(session);
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Set up session middleware
+app.use(session({
+  store: new PgStore({
+    pool,
+    tableName: 'session' // Use this table for storing session data
+  }),
+  secret: process.env.SESSION_SECRET || 'asili-kenya-secret', // Use env variable in production
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    secure: false // Set to true in production with HTTPS
+  }
+}));
 
 app.use((req, res, next) => {
   const start = Date.now();

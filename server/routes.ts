@@ -1,9 +1,22 @@
-import express, { type Express, Response, Request } from "express";
+import express, { type Express, Response } from "express";
 import { createServer, type Server } from "http";
+import session from "express-session";
 import { storage } from "./storage";
 import { insertOrderSchema, insertProductSchema, insertCategorySchema, insertUserSchema } from "@shared/schema";
 import { z } from "zod";
-import { ValidationError } from "zod-validation-error";
+import { fromZodError } from "zod-validation-error";
+
+// Declare module for session
+declare module "express-session" {
+  interface SessionData {
+    userId?: number;
+  }
+}
+
+// Extend Request type to include session
+interface Request extends express.Request {
+  session: session.Session & Partial<session.SessionData>;
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes
@@ -50,7 +63,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(201).json(newCategory);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const validationError = new ValidationError(error);
+        const validationError = fromZodError(error);
         return res.status(400).json({ error: validationError.message });
       }
       res.status(500).json({ error: "Failed to create category" });
