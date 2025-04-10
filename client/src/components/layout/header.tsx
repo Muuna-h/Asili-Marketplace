@@ -103,7 +103,7 @@ export default function Header() {
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
-                <Link href="/" className="text-neutral-dark hover:text-primary font-medium">
+                <Link href="/category/all" className="text-neutral-dark hover:text-primary font-medium">
                   Shop
                 </Link>
                 <Link href="/about" className="text-neutral-dark hover:text-primary font-medium">
@@ -171,7 +171,7 @@ export default function Header() {
                     ))}
                   </div>
                 </div>
-                <Link href="/" className="text-neutral-dark hover:text-primary font-medium py-2">
+                <Link href="/category/all" className="text-neutral-dark hover:text-primary font-medium py-2">
                   Shop
                 </Link>
                 <Link href="/about" className="text-neutral-dark hover:text-primary font-medium py-2">

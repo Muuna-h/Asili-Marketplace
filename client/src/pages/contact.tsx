@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { CONTACT_INFO, COLORS } from "@/lib/constants";
+import { CONTACT_INFO, COLORS, SOCIAL_LINKS } from "@/lib/constants";
 
 // Form schema
 const contactSchema = z.object({

@@ -29,30 +29,35 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     };
   }, []);
   
-  // Check if this is a search or category view
+  // Check if this is a search, all products, or specific category view
   const isSearch = slug === "search" && searchQuery;
+  const isAllProducts = slug === "all";
   
   // Get category information
   const category = CATEGORIES.find(cat => cat.slug === slug);
   
-  // Fetch category details from API if not a search
+  // Fetch category details from API if not a search and not "all" category
   const { data: categoryDetails } = useQuery({
     queryKey: [`/api/categories/${slug}`],
-    enabled: !isSearch && !!slug
+    enabled: !isSearch && !isAllProducts && !!slug
   });
   
-  // Fetch products based on category or search
+  // Fetch products based on category, search, or all products
   const { data: products, isLoading } = useQuery({
     queryKey: isSearch 
       ? [`/api/products/search?q=${searchQuery}`]
-      : [`/api/products/category/${categoryDetails?.id || 0}`],
-    enabled: isSearch || !!categoryDetails?.id
+      : isAllProducts
+        ? ['/api/products']
+        : [`/api/products/category/${categoryDetails?.id || 0}`],
+    enabled: isSearch || isAllProducts || !!categoryDetails?.id
   });
   
-  // Create a title based on category or search
+  // Create a title based on category, all products, or search
   const title = isSearch 
     ? `Search Results: ${searchQuery}` 
-    : (categoryDetails?.name || category?.name || "Products");
+    : isAllProducts
+      ? "All Products"
+      : (categoryDetails?.name || category?.name || "Products");
   
   return (
     <div className="min-h-screen flex flex-col">
