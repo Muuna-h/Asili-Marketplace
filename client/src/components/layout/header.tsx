@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useCart } from "@/hooks/use-cart";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 import { COLORS } from "@/lib/constants";
 import CartSidebar from "./cart-sidebar";
+import { apiRequest } from "@/lib/queryClient";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [location, navigate] = useLocation();
   const { itemCount, toggleCart } = useCart();
+  
+  // Fetch categories for the dropdown menu
+  const { data: categories } = useQuery({
+    queryKey: ['/api/categories'],
+    queryFn: async () => {
+      const res = await apiRequest('GET', '/api/categories');
+      return res.json();
+    }
+  });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,6 +89,20 @@ export default function Header() {
               </form>
               
               <nav className="flex items-center space-x-6">
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="text-neutral-dark hover:text-primary font-medium flex items-center gap-1">
+                    Categories <i className="fas fa-chevron-down text-xs ml-1"></i>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56">
+                    {categories && categories.map((category: { id: number, name: string, slug: string }) => (
+                      <DropdownMenuItem key={category.id} asChild>
+                        <Link href={`/category/${category.slug}`} className="w-full cursor-pointer">
+                          {category.name}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 <Link href="/" className="text-neutral-dark hover:text-primary font-medium">
                   Shop
                 </Link>
@@ -125,6 +156,21 @@ export default function Header() {
                 </button>
               </form>
               <nav className="mt-4 flex flex-col space-y-2">
+                <div className="text-neutral-dark font-medium py-2 border-b border-gray-200">
+                  <p className="mb-2">Categories</p>
+                  <div className="pl-4 flex flex-col space-y-2">
+                    {categories && categories.map((category: { id: number, name: string, slug: string }) => (
+                      <Link 
+                        key={category.id} 
+                        href={`/category/${category.slug}`} 
+                        className="text-neutral-dark hover:text-primary py-1"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <Link href="/" className="text-neutral-dark hover:text-primary font-medium py-2">
                   Shop
                 </Link>
