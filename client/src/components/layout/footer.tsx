@@ -124,8 +124,25 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
-          <p>&copy; {new Date().getFullYear()} Asili Kenya. All rights reserved.</p>
+        {/* Sell With Us CTA */}
+        <div className="border-t border-white/20 mt-8 pt-8 flex flex-col items-center">
+          <div className="max-w-2xl text-center mb-6">
+            <h3 className="text-xl font-semibold mb-2">Want to sell with us?</h3>
+            <p className="text-white/80 mb-4">
+              Join our marketplace of Kenyan artisans and entrepreneurs. Connect with customers who value authentic Kenyan products.
+            </p>
+            <Link href="/contact?seller=true">
+              <button 
+                className="px-6 py-3 rounded-md font-medium text-white transition-all"
+                style={{ backgroundColor: COLORS.primary }}
+              >
+                Sell With Us
+              </button>
+            </Link>
+          </div>
+          <p className="text-white/60 text-sm">
+            &copy; {new Date().getFullYear()} Asili Kenya. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

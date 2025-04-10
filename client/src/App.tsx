@@ -10,6 +10,7 @@ import ProductPage from "@/pages/product";
 import CategoryPage from "@/pages/category";
 import CheckoutPage from "@/pages/checkout";
 import ConfirmationPage from "@/pages/confirmation";
+import ContactPage from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
 // Admin pages
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/category/:slug" component={CategoryPage} />
       <Route path="/checkout" component={CheckoutPage} />
       <Route path="/confirmation/:orderId" component={ConfirmationPage} />
+      <Route path="/contact" component={ContactPage} />
       
       {/* Admin Routes */}
       <Route path="/admin" component={AdminLoginPage} />
