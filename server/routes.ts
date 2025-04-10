@@ -89,7 +89,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(updatedCategory);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const validationError = new ValidationError(error);
+        const validationError = fromZodError(error);
         return res.status(400).json({ error: validationError.message });
       }
       res.status(500).json({ error: "Failed to update category" });
@@ -194,7 +194,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(201).json(newProduct);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const validationError = new ValidationError(error);
+        const validationError = fromZodError(error);
         return res.status(400).json({ error: validationError.message });
       }
       res.status(500).json({ error: "Failed to create product" });
@@ -220,7 +220,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(updatedProduct);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const validationError = new ValidationError(error);
+        const validationError = fromZodError(error);
         return res.status(400).json({ error: validationError.message });
       }
       res.status(500).json({ error: "Failed to update product" });
@@ -281,7 +281,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(201).json(newOrder);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const validationError = new ValidationError(error);
+        const validationError = fromZodError(error);
         return res.status(400).json({ error: validationError.message });
       }
       res.status(500).json({ error: "Failed to create order" });
