@@ -317,10 +317,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ error: "Invalid credentials" });
       }
       
+      // Implement session for admin auth
+      // In production, use proper session management
+      if (!req.session) {
+        return res.status(500).json({ error: "Session unavailable" });
+      }
+      
+      // Store user ID in session
+      req.session.userId = user.id;
+      
       // In production, implement a proper authentication system with JWT or sessions
       res.json({ id: user.id, username: user.username, isAdmin: user.isAdmin });
     } catch (error) {
       res.status(500).json({ error: "Authentication failed" });
+    }
+  });
+  
+  // Get current user
+  apiRouter.get("/auth/me", async (req: Request, res: Response) => {
+    try {
+      // Check if user is logged in
+      if (!req.session || !req.session.userId) {
+        return res.status(401).json({ error: "Not authenticated" });
+      }
+      
+      const userId = req.session.userId;
+      const user = await storage.getUser(userId);
+      
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      
+      // Return user without password
+      res.json({
+        id: user.id,
+        username: user.username,
+        isAdmin: user.isAdmin
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get user" });
+    }
+  });
+  
+  // Logout
+  apiRouter.post("/auth/logout", async (req: Request, res: Response) => {
+    try {
+      if (req.session) {
+        req.session.destroy((err) => {
+          if (err) {
+            return res.status(500).json({ error: "Failed to logout" });
+          }
+          res.json({ success: true });
+        });
+      } else {
+        res.json({ success: true });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to logout" });
     }
   });
   

@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { CartProvider } from "@/hooks/use-cart";
+import { AdminAuthProvider } from "@/hooks/use-admin-auth";
 
 import HomePage from "@/pages/home";
 import ProductPage from "@/pages/product";
@@ -46,10 +47,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
-        <Router />
-        <Toaster />
-      </CartProvider>
+      <AdminAuthProvider>
+        <CartProvider>
+          <Router />
+          <Toaster />
+        </CartProvider>
+      </AdminAuthProvider>
     </QueryClientProvider>
   );
 }
