@@ -13,6 +13,7 @@ type User = {
 type AuthContextType = {
   user: User | null;
   isLoading: boolean;
+  isAuthenticated: boolean;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 };
@@ -110,7 +111,13 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
   };
   
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, logout }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      isLoading, 
+      isAuthenticated: !!user,
+      login, 
+      logout 
+    }}>
       {children}
     </AuthContext.Provider>
   );
@@ -127,14 +134,14 @@ export function useAdminAuth() {
 // Protected route wrapper for admin routes
 export function withAdminAuth(Component: React.ComponentType<any>) {
   return function ProtectedRoute(props: any) {
-    const { user, isLoading } = useAdminAuth();
+    const { isAuthenticated, isLoading } = useAdminAuth();
     const [, navigate] = useLocation();
     
     useEffect(() => {
-      if (!isLoading && !user) {
+      if (!isLoading && !isAuthenticated) {
         navigate("/admin");
       }
-    }, [user, isLoading, navigate]);
+    }, [isAuthenticated, isLoading, navigate]);
     
     if (isLoading) {
       return (
@@ -144,6 +151,6 @@ export function withAdminAuth(Component: React.ComponentType<any>) {
       );
     }
     
-    return user ? <Component {...props} /> : null;
+    return isAuthenticated ? <Component {...props} /> : null;
   };
 }

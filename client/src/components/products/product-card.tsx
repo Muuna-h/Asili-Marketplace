@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
@@ -18,11 +18,41 @@ interface ProductCardProps {
     };
     categoryId: number;
   };
+  animationDelay?: number;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, animationDelay = 0 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { addItem } = useCart();
+  const [isVisible, setIsVisible] = useState(false);
+  
+  // Set up intersection observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setIsVisible(true);
+            }, animationDelay);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    const currentElement = document.getElementById(`product-${product.id}`);
+    if (currentElement) {
+      observer.observe(currentElement);
+    }
+    
+    return () => {
+      if (currentElement) {
+        observer.unobserve(currentElement);
+      }
+    };
+  }, [product.id, animationDelay]);
   
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -40,14 +70,24 @@ export default function ProductCard({ product }: ProductCardProps) {
   
   return (
     <div 
-      className="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition relative group"
+      id={`product-${product.id}`}
+      className={`product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition relative group ${
+        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
+      }`}
+      style={{
+        transition: `opacity 0.6s ease, transform 0.6s ease`,
+        transitionDelay: `${animationDelay}ms`
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link href={`/product/${product.slug}`} className="block">
         <div 
-          className="h-48 md:h-56 bg-cover bg-center"
-          style={{ backgroundImage: `url('${product.images[0]}')` }}
+          className="h-48 md:h-56 bg-cover bg-center transition-transform duration-500"
+          style={{ 
+            backgroundImage: `url('${product.images[0]}')`,
+            transform: isHovered ? 'scale(1.1)' : 'scale(1)'
+          }}
         ></div>
         <div className="p-3 md:p-4">
           <div className="text-sm text-gray-500">{product.category?.name || "Product"}</div>

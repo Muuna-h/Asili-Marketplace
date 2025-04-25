@@ -3,7 +3,8 @@ import {
   type User, type InsertUser,
   type Category, type InsertCategory,
   type Product, type InsertProduct,
-  type Order, type InsertOrder
+  type Order, type InsertOrder,
+  type ProductWithCategory
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and, like } from "drizzle-orm";
@@ -26,7 +27,7 @@ export interface IStorage {
   getProducts(): Promise<Product[]>;
   getProductsByCategory(categoryId: number): Promise<Product[]>;
   getProductsBySearch(searchTerm: string): Promise<Product[]>;
-  getProductBySlug(slug: string): Promise<Product | undefined>;
+  getProductBySlug(slug: string): Promise<ProductWithCategory | undefined>;
   getFeaturedProducts(): Promise<Product[]>;
   getNewArrivals(limit?: number): Promise<Product[]>;
   createProduct(product: InsertProduct): Promise<Product>;
@@ -111,8 +112,13 @@ export class DatabaseStorage implements IStorage {
     return db.select().from(products).where(like(products.name, `%${searchTerm}%`));
   }
   
-  async getProductBySlug(slug: string): Promise<Product | undefined> {
-    const [product] = await db.select().from(products).where(eq(products.slug, slug));
+  async getProductBySlug(slug: string): Promise<ProductWithCategory | undefined> {
+    const product = await db.query.products.findFirst({
+      where: eq(products.slug, slug),
+      with: {
+        category: true,
+      }
+    });
     return product;
   }
   
@@ -120,7 +126,7 @@ export class DatabaseStorage implements IStorage {
     return db.select().from(products).where(eq(products.featured, true)).limit(8);
   }
   
-  async getNewArrivals(limit: number = 4): Promise<Product[]> {
+  async getNewArrivals(limit: number = 8): Promise<Product[]> {
     return db.select().from(products).orderBy(desc(products.createdAt)).limit(limit);
   }
   

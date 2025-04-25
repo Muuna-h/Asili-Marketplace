@@ -1,6 +1,7 @@
 import { pgTable, text, serial, integer, doublePrecision, timestamp, boolean, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
+import { relations } from "drizzle-orm";
 
 // Users schema (for admin access only)
 export const users = pgTable("users", {
@@ -71,6 +72,8 @@ export const orders = pgTable("orders", {
   items: jsonb("items").notNull(),
   total: doublePrecision("total").notNull(),
   status: text("status").default("pending").notNull(),
+  paymentMethod: text("payment_method").notNull(),
+  mpesaCode: text("mpesa_code"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -82,6 +85,8 @@ export const insertOrderSchema = createInsertSchema(orders).pick({
   items: true,
   total: true,
   status: true,
+  paymentMethod: true,
+  mpesaCode: true,
 });
 
 // Define types
@@ -106,3 +111,20 @@ export type CartItem = {
   quantity: number;
   category: string;
 };
+
+// Define type for Product joined with Category
+export type ProductWithCategory = Product & {
+  category: Category | null; // Category can be null if the join finds no match
+};
+
+// --- RELATIONS ---
+export const productsRelations = relations(products, ({ one }) => ({
+	category: one(categories, {
+		fields: [products.categoryId],
+		references: [categories.id],
+	}),
+}));
+
+export const categoriesRelations = relations(categories, ({ many }) => ({
+	products: many(products),
+}));

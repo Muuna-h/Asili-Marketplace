@@ -7,6 +7,8 @@ import FeaturedCategories from "@/components/home/featured-categories";
 import FeaturedProducts from "@/components/home/featured-products";
 import Banner from "@/components/home/banner";
 import NewArrivals from "@/components/home/new-arrivals";
+import ShoppingBenefitsBanner from "@/components/home/shopping-benefits-banner";
+import ScrollAnimation from "@/components/ui/scroll-animation";
 import { COLORS } from "@/lib/constants";
 
 export default function HomePage() {
@@ -29,12 +31,28 @@ export default function HomePage() {
             <CategorySidebar />
             
             <main className="lg:w-4/5">
-              <div id="home-page" className="space-y-10">
+              <div id="home-page" className="space-y-16">
                 <HeroSlider />
-                <FeaturedCategories />
-                <FeaturedProducts />
-                <Banner />
-                <NewArrivals />
+                
+                <ScrollAnimation type="fade-up">
+                  <Banner />
+                </ScrollAnimation>
+                
+                <ScrollAnimation type="zoom-in" delay={100}>
+                  <FeaturedCategories />
+                </ScrollAnimation>
+                
+                <ScrollAnimation type="fade-up" delay={200}>
+                  <FeaturedProducts />
+                </ScrollAnimation>
+                
+                <ScrollAnimation type="fade-left" delay={100}>
+                  <ShoppingBenefitsBanner />
+                </ScrollAnimation>
+                
+                <ScrollAnimation type="zoom-in" delay={200}>
+                  <NewArrivals />
+                </ScrollAnimation>
               </div>
             </main>
           </div>

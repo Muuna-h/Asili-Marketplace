@@ -35,6 +35,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COLORS } from "@/lib/constants";
+import { Link } from "wouter";
 
 export default function OrderList() {
   const { toast } = useToast();
@@ -109,9 +110,15 @@ export default function OrderList() {
         <h2 className="text-xl font-semibold" style={{ color: COLORS.secondary }}>
           Manage Orders
         </h2>
+        <Link href="/admin/orders/create">
+          <Button style={{ backgroundColor: COLORS.primary }}>
+            <i className="fas fa-plus mr-2"></i>
+            Create Manual Order
+          </Button>
+        </Link>
       </div>
       
-      {orders && orders.length > 0 ? (
+      {Array.isArray(orders) && orders.length > 0 ? (
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
@@ -128,7 +135,7 @@ export default function OrderList() {
             <TableBody>
               {orders.map((order: any) => (
                 <TableRow key={order.id}>
-                  <TableCell>#{order.id.toString().padStart(5, '0')}</TableCell>
+                  <TableCell>#ASL-{order.id}</TableCell>
                   <TableCell>
                     <div className="font-medium">{order.fullName}</div>
                     <div className="text-sm text-gray-500">{order.phone}</div>
@@ -192,7 +199,7 @@ export default function OrderList() {
       <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle>Order Details #{selectedOrder?.id.toString().padStart(5, '0')}</DialogTitle>
+            <DialogTitle>Order Details #ASL-{selectedOrder?.id}</DialogTitle>
           </DialogHeader>
           
           {selectedOrder && (

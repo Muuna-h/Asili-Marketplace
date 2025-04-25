@@ -10,7 +10,7 @@ export default function AdminHeader() {
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <h1 className="font-display text-xl" style={{ color: COLORS.primary }}>
-            ASILI KENYA
+            ASILI MARKETPLACE
           </h1>
           <span className="ml-2 text-sm font-medium py-1 px-2 rounded" style={{ backgroundColor: COLORS.secondary, color: 'white' }}>
             Admin

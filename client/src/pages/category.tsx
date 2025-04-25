@@ -7,6 +7,7 @@ import CategorySidebar from "@/components/layout/category-sidebar";
 import ProductCard from "@/components/products/product-card";
 import { Button } from "@/components/ui/button";
 import { COLORS, CATEGORIES } from "@/lib/constants";
+import type { Category, Product } from "@shared/schema";
 
 interface CategoryPageProps {
   params: {
@@ -37,19 +38,19 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const category = CATEGORIES.find(cat => cat.slug === slug);
   
   // Fetch category details from API if not a search and not "all" category
-  const { data: categoryDetails } = useQuery({
+  const { data: categoryDetails } = useQuery<Category>({
     queryKey: [`/api/categories/${slug}`],
     enabled: !isSearch && !isAllProducts && !!slug
   });
   
   // Fetch products based on category, search, or all products
-  const { data: products, isLoading } = useQuery({
+  const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: isSearch 
       ? [`/api/products/search?q=${searchQuery}`]
       : isAllProducts
         ? ['/api/products']
         : [`/api/products/category/${categoryDetails?.id || 0}`],
-    enabled: isSearch || isAllProducts || !!categoryDetails?.id
+    enabled: !!(isSearch || isAllProducts || categoryDetails?.id)
   });
   
   // Create a title based on category, all products, or search

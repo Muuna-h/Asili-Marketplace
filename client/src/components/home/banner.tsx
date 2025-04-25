@@ -11,24 +11,27 @@ export default function Banner() {
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 p-8 md:p-12 flex items-center">
           <div className="text-white max-w-md">
-            <h2 className="font-display text-2xl md:text-3xl mb-4">Support Local Artisans</h2>
+            <h2 className="font-display text-2xl md:text-3xl mb-4">Welcome to Asili MarketPlace</h2>
             <p className="mb-6">
-              Every purchase directly benefits Kenyan craftspeople and their communities. 
-              Experience authentic Kenyan culture with every product.
+              Discover authentic Kenyan crafts, textiles, and more from professional Manufacturers across the country.
             </p>
-            <Link href="/about">
+            <Link href="/category/all">
               <Button 
                 className="inline-block font-semibold rounded-full"
                 style={{ backgroundColor: COLORS.accent, color: COLORS.secondary }}
               >
-                Learn More
+                Shop Now
               </Button>
             </Link>
           </div>
         </div>
         <div 
-          className="md:w-1/2 h-60 md:h-auto bg-cover bg-center"
-          style={{ backgroundImage: `url('${STOCK_IMAGES.artisans}')` }}
+          className="md:w-1/2 h-80 md:h-auto bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url('https://images.unsplash.com/photo-1592892111425-15e04305f961?auto=format&fit=crop&w=1000&q=80')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
         ></div>
       </div>
     </section>

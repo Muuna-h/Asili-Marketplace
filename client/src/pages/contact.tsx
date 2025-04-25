@@ -212,36 +212,17 @@ export default function ContactPage() {
               
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <i className="fas fa-envelope mt-1 mr-3" style={{ color: COLORS.primary }}></i>
+                  <i className="fas fa-user mt-1 mr-3" style={{ color: COLORS.primary }}></i>
                   <div>
                     <p className="font-medium">Email</p>
                     <p className="text-gray-600">{CONTACT_INFO.email}</p>
                   </div>
                 </div>
-                
                 <div className="flex items-start">
                   <i className="fas fa-phone-alt mt-1 mr-3" style={{ color: COLORS.primary }}></i>
                   <div>
-                    <p className="font-medium">Phone</p>
-                    <p className="text-gray-600">{CONTACT_INFO.phone}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <i className="fas fa-map-marker-alt mt-1 mr-3" style={{ color: COLORS.primary }}></i>
-                  <div>
-                    <p className="font-medium">Address</p>
-                    <p className="text-gray-600">{CONTACT_INFO.address}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <i className="fas fa-clock mt-1 mr-3" style={{ color: COLORS.primary }}></i>
-                  <div>
-                    <p className="font-medium">Business Hours</p>
-                    <p className="text-gray-600">Monday - Friday: 9AM - 5PM</p>
-                    <p className="text-gray-600">Saturday: 10AM - 2PM</p>
-                    <p className="text-gray-600">Sunday: Closed</p>
+                    <p className="font-medium">Call/Whatsapp</p>
+                    <p className="text-gray-600">+254705003641</p>
                   </div>
                 </div>
               </div>

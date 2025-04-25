@@ -2,13 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { COLORS } from "@/lib/constants";
+import type { Order } from "@shared/schema";
 
 interface OrderConfirmationProps {
   orderId: string;
 }
 
 export default function OrderConfirmation({ orderId }: OrderConfirmationProps) {
-  const { data: order, isLoading, error } = useQuery({
+  const { data: order, isLoading, error } = useQuery<Order>({
     queryKey: [`/api/orders/${orderId}`]
   });
   
@@ -63,7 +64,7 @@ export default function OrderConfirmation({ orderId }: OrderConfirmationProps) {
         Thank You for Your Order!
       </h1>
       <p className="text-gray-600 max-w-md mx-auto mb-8">
-        We've received your order and will contact you shortly to arrange delivery and payment details.
+        We've received your order and will contact you shortly to arrange delivery.
       </p>
       
       <div className="inline-block text-left max-w-md mx-auto mb-8 p-4 rounded-lg"
@@ -74,9 +75,9 @@ export default function OrderConfirmation({ orderId }: OrderConfirmationProps) {
           className="text-2xl font-medium mb-4"
           style={{ color: COLORS.secondary }}
         >
-          #{orderReference}
+          #ASL-{orderId}
         </div>
-        <div>A confirmation has been sent to your phone.</div>
+        <div>A confirmation will be sent to your phone or email.</div>
       </div>
       
       <div>

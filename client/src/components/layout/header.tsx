@@ -57,14 +57,21 @@ export default function Header() {
             </button>
             
             {/* Logo */}
-            <div className="flex-1 text-center lg:text-center">
-              <Link href="/" className="inline-block">
-                <h1 className="font-display font-bold text-2xl md:text-3xl" style={{ color: COLORS.primary }}>
-                  ASILI KENYA
-                </h1>
-                <p className="text-sm font-medium" style={{ color: COLORS.secondary }}>
-                  For Kenya from Kenya
-                </p>
+            <div className="flex-1 text-center lg:text-left">
+              <Link href="/" className="inline-flex items-center">
+                <img 
+                  src="/images/logo.png" 
+                  alt="Asili Marketplace Logo" 
+                  className="h-12 md:h-14 w-auto mr-3"
+                />
+                <div>
+                  <h1 className="font-display font-bold text-2xl md:text-3xl" style={{ color: COLORS.primary }}>
+                    ASILI MARKETPLACE
+                  </h1>
+                  <p className="text-sm font-medium" style={{ color: COLORS.secondary }}>
+                    For Kenya from Kenya
+                  </p>
+                </div>
               </Link>
             </div>
             

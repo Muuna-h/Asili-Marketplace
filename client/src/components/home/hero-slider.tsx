@@ -13,25 +13,25 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    image: "https://images.unsplash.com/photo-1621357860089-93139a5a2375?auto=format&fit=crop&w=1500&q=80",
-    title: "Authentic Kenyan Handcrafted Products",
-    description: "Discover the beauty of traditional craftsmanship with modern design",
-    linkUrl: "/category/crafts",
-    linkText: "Shop Collection"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1591378603223-e15b45a3654d?auto=format&fit=crop&w=1500&q=80",
+    image: "/images/textiles-slide.png",
     title: "Exquisite Kenyan Textiles",
-    description: "Beautiful fabrics and textiles handcrafted by local artisans",
+    description: "Beautiful fabrics and textiles Made by local manufacturers",
     linkUrl: "/category/textiles",
     linkText: "Explore Textiles"
   },
   {
-    image: "https://images.unsplash.com/photo-1528755192414-9666f1a774ef?auto=format&fit=crop&w=1500&q=80",
+    image: "/images/food-slide.png",
     title: "Organic Kenyan Foods & Drinks",
     description: "Taste the authentic flavors of Kenya with our premium selections",
     linkUrl: "/category/foods-drinks",
     linkText: "Discover Flavors"
+  },
+  {
+    image: "/images/crafts-slide.png",
+    title: "Authentic Kenyan Products",
+    description: "Discover the beauty of Kenyan Made goods and designs",
+    linkUrl: "/category/crafts",
+    linkText: "Shop Collection"
   }
 ];
 
@@ -61,7 +61,7 @@ export default function HeroSlider() {
   
   return (
     <div 
-      className="hero-slider rounded-lg overflow-hidden relative h-[300px] md:h-[500px]" 
+      className="hero-slider rounded-lg overflow-hidden relative h-[400px] md:h-[500px] shadow-md" 
       style={{ backgroundColor: COLORS.secondary }}
     >
       {/* Slides */}
@@ -69,17 +69,21 @@ export default function HeroSlider() {
         {slides.map((slide, index) => (
           <div 
             key={index}
-            className={`slide absolute inset-0 h-full bg-cover bg-center flex items-center transition-opacity duration-500 ${
+            className={`slide absolute inset-0 h-full w-full bg-cover bg-center flex items-center transition-opacity duration-500 ${
               index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
-            style={{ backgroundImage: `url('${slide.image}')` }}
+            style={{ 
+              backgroundImage: `url('${slide.image}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
             <div className="text-white p-8 md:p-16 max-w-lg relative z-20">
-              <h2 className="font-display text-3xl md:text-4xl mb-4">{slide.title}</h2>
-              <p className="mb-6">{slide.description}</p>
+              <h2 className="font-display text-3xl md:text-5xl mb-4 drop-shadow-lg">{slide.title}</h2>
+              <p className="mb-6 text-lg drop-shadow-md">{slide.description}</p>
               <Link href={slide.linkUrl}>
                 <Button 
-                  className="inline-block font-semibold rounded-full"
+                  className="inline-block font-semibold rounded-full px-6 py-3 text-lg shadow-lg"
                   style={{ backgroundColor: COLORS.primary }}
                 >
                   {slide.linkText}
@@ -87,34 +91,38 @@ export default function HeroSlider() {
               </Link>
             </div>
             {/* Overlay to darken the image and make text readable */}
-            <div className="absolute inset-0 bg-black bg-opacity-30 z-10"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
           </div>
         ))}
       </div>
       
       {/* Slider Controls */}
       <button 
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition z-20"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 text-white flex items-center justify-center transition z-30 shadow-md"
         onClick={goToPrevSlide}
         aria-label="Previous slide"
       >
-        <i className="fas fa-chevron-left"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
       </button>
       <button 
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition z-20"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/30 hover:bg-white/50 text-white flex items-center justify-center transition z-30 shadow-md"
         onClick={goToNextSlide}
         aria-label="Next slide"
       >
-        <i className="fas fa-chevron-right"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
       </button>
       
       {/* Slider Indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
         {slides.map((_, index) => (
           <button 
             key={index}
-            className={`w-2.5 h-2.5 rounded-full bg-white transition-opacity ${
-              index === currentSlide ? 'opacity-100' : 'opacity-50'
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/70'
             }`}
             onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { COLORS } from "@/lib/constants";
+import type { ProductWithCategory } from "@shared/schema";
 
 interface ProductDetailProps {
   slug: string;
@@ -17,7 +18,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
   const [_, navigate] = useLocation();
   
   // Fetch product details from the API
-  const { data: product, isLoading, error } = useQuery({
+  const { data: product, isLoading, error } = useQuery<ProductWithCategory>({
     queryKey: [`/api/products/${slug}`]
   });
   
@@ -181,7 +182,7 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
                   className="fas fa-check mt-1 mr-2"
                   style={{ color: COLORS.success }}
                 ></i>
-                <span>Handcrafted in Kenya</span>
+                <span>Made in Kenya</span>
               </li>
               <li className="flex items-start">
                 <i 
@@ -259,6 +260,31 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
               >
                 <i className="fas fa-credit-card mr-2"></i> Checkout
               </Button>
+
+              {/* Add Call/WhatsApp Buttons */}
+              <div className="pt-4 text-center">
+                 <p className="text-sm font-semibold text-gray-700 mb-3">Or inquire / order directly:</p>
+                 <div className="flex flex-col sm:flex-row gap-3">
+                    {/* Call Button - Orange Background, White Text */}
+                    <a 
+                      href="tel:+254705003641"
+                      className="flex-1 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 text-white hover:opacity-90"
+                      style={{ backgroundColor: COLORS.primary }}
+                      >
+                       <i className="fas fa-phone-alt mr-2"></i> Call to Order
+                    </a>
+                    {/* WhatsApp Button - Green Background, White Text */}
+                     <a 
+                      href="https://wa.me/254705003641?text=Hi%2C%20I'm%20interested%20in%20ordering%20the%20product%3A%20" // Pre-fill message slightly
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 text-white hover:opacity-90"
+                       style={{ backgroundColor: COLORS.secondary }}
+                      >
+                       <i className="fab fa-whatsapp mr-2"></i> WhatsApp Inquiry
+                    </a>
+                 </div>
+              </div>
             </div>
           </div>
         </div>

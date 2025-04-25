@@ -3,10 +3,17 @@ import session from "express-session";
 import pgSession from "connect-pg-simple";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import { pool } from "./db";
+import pg from 'pg';
+const { Pool } = pg;
 
 // Initialize PostgreSQL session store
 const PgStore = pgSession(session);
+
+// Create pool with proper typing
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
 
 const app = express();
 app.use(express.json());
@@ -57,6 +64,30 @@ app.use((req, res, next) => {
   next();
 });
 
+// Test database connection and tables
+app.get('/test-db', async (req, res) => {
+  try {
+    // Test categories table
+    const categoriesResult = await pool.query('SELECT * FROM categories LIMIT 1');
+    // Test products table
+    const productsResult = await pool.query('SELECT * FROM products LIMIT 1');
+    
+    res.json({
+      success: true,
+      message: 'Database connection and tables verified',
+      categories: categoriesResult.rows.length > 0 ? 'Categories table exists' : 'Categories table is empty',
+      products: productsResult.rows.length > 0 ? 'Products table exists' : 'Products table is empty'
+    });
+  } catch (error: any) {
+    console.error('Database error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Database error',
+      error: error.message
+    });
+  }
+});
+
 (async () => {
   const server = await registerRoutes(app);
 
@@ -80,12 +111,8 @@ app.use((req, res, next) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    log(`serving on port ${PORT}`);
   });
 })();

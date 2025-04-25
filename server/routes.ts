@@ -52,6 +52,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(category);
     } catch (error) {
+      console.error("Error fetching category by slug:", error);
       res.status(500).json({ error: "Failed to fetch category" });
     }
   });

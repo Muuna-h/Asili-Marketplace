@@ -22,25 +22,25 @@ export const SOCIAL_LINKS = {
 
 // Contact Information
 export const CONTACT_INFO = {
-  email: "info@asilikenya.com",
-  phone: "+254 123 456 789",
+  email: "info@asilimarketplace.co.ke",
+  phone: "+254 705003641",
   address: "Nairobi, Kenya"
 };
 
 // Sample Stock Images
 export const STOCK_IMAGES = {
-  handcrafted: "https://images.unsplash.com/photo-1621357860089-93139a5a2375?auto=format&fit=crop&w=800&q=80",
-  textiles: "https://images.unsplash.com/photo-1591378603223-e15b45a3654d?auto=format&fit=crop&w=800&q=80",
-  foodDrinks: "https://images.unsplash.com/photo-1528755192414-9666f1a774ef?auto=format&fit=crop&w=800&q=80",
-  furniture: "https://images.unsplash.com/photo-1632149877166-f75d49000351?auto=format&fit=crop&w=800&q=80",
-  beadwork: "https://images.unsplash.com/photo-1518057111178-44a106bad636?auto=format&fit=crop&w=800&q=80",
-  coffee: "https://images.unsplash.com/photo-1534186166251-b40365783de9?auto=format&fit=crop&w=800&q=80",
-  basket: "https://images.unsplash.com/photo-1597696929736-7d04d0e05a6e?auto=format&fit=crop&w=800&q=80",
-  woodCarving: "https://images.unsplash.com/photo-1558350315-8aa00e8e4590?auto=format&fit=crop&w=800&q=80",
-  coffeeTable: "https://images.unsplash.com/photo-1575312065386-81d671c5acea?auto=format&fit=crop&w=800&q=80",
-  sheaButter: "https://images.unsplash.com/photo-1590422749897-47036c445c71?auto=format&fit=crop&w=800&q=80",
-  ankaraBag: "https://images.unsplash.com/photo-1597696929736-7d04d0e05a6e?auto=format&fit=crop&w=800&q=80",
-  artisans: "https://images.unsplash.com/photo-1596646694583-b9ea0314f724?auto=format&fit=crop&w=800&q=80"
+  handcrafted: "https://shopsaskia.com/cdn/shop/products/Rev_c2004_2_Pattern_Bowls_A_Stack_600px_600x.jpg?v=1668009456", // Handmade Soapstone Bowl
+  textiles: "https://th.bing.com/th/id/OIP.8VEXvgTYRwF0I012uDj-PQHaHa?w=1080&h=1080&rs=1&pid=ImgDetMain", // Handwoven Kiondo Basket
+  foodDrinks: "https://cdn11.bigcommerce.com/s-hga8yrisp5/images/stencil/original/products/188/439/Kenyan_Green__62539.1534010530.jpg?c=2", // Organic Kenyan Coffee Beans
+  furniture: "https://i.pinimg.com/originals/84/a3/4a/84a34a73b457aad06f605721f34c6f5f.jpg", // Reclaimed Wood Coffee Table
+  beadwork: "https://i.pinimg.com/originals/7c/91/a2/7c91a29845aa6fcf4cfabf07be039588.jpg", // Beaded Maasai Necklace
+  coffee: "https://cdn11.bigcommerce.com/s-hga8yrisp5/images/stencil/original/products/188/439/Kenyan_Green__62539.1534010530.jpg?c=2", // Organic Kenyan Coffee Beans
+  basket: "https://th.bing.com/th/id/OIP.8VEXvgTYRwF0I012uDj-PQHaHa?w=1080&h=1080&rs=1&pid=ImgDetMain", // Handwoven Kiondo Basket
+  woodCarving: "https://shopsaskia.com/cdn/shop/products/Rev_c2004_2_Pattern_Bowls_A_Stack_600px_600x.jpg?v=1668009456", // Handmade Soapstone Bowl
+  coffeeTable: "https://i.pinimg.com/originals/84/a3/4a/84a34a73b457aad06f605721f34c6f5f.jpg", // Reclaimed Wood Coffee Table
+  sheaButter: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/aur/aur90141/v/14.jpg", // Organic Shea Butter Set
+  ankaraBag: "https://th.bing.com/th/id/OIP.6hHM5zXiyYAkygIhZVDwngHaHa?rs=1&pid=ImgDetMain", // Ankara Print Tote Bag
+  artisans: "https://images.unsplash.com/photo-1596646694583-b9ea0314f724?auto=format&fit=crop&w=800&q=80" // Keep original artisans image
 };
 
 // Colors
@@ -57,4 +57,4 @@ export const COLORS = {
 };
 
 // Shipping Cost
-export const SHIPPING_COST = 350; // in KSH
+export const SHIPPING_COST = 150; // in KSH

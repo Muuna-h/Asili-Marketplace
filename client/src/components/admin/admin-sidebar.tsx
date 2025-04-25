@@ -21,6 +21,11 @@ export default function AdminSidebar() {
       path: "/admin/orders" 
     },
     {
+      icon: "fas fa-percentage",
+      label: "Promotions",
+      path: "/admin/promotions"
+    },
+    {
       icon: "fas fa-home",
       label: "View Store",
       path: "/"

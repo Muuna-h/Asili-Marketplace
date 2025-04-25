@@ -8,8 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div>
-            <h2 className="font-display font-bold text-2xl mb-4">ASILI KENYA</h2>
-            <p className="text-white/80 mb-6">Connecting you to authentic Kenyan craftsmanship and culture.</p>
+            <h2 className="font-display font-bold text-2xl mb-4">ASILI MARKETPLACE</h2>
+            <p className="text-white/80 mb-6">Connecting you to authentic Kenyan Product.</p>
             <div className="flex space-x-4">
               <a 
                 href={SOCIAL_LINKS.facebook} 
@@ -83,7 +83,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/shipping" className="text-white/80 hover:text-white transition">
-                  Shipping Information
+                  Delivery Information
                 </Link>
               </li>
               <li>
@@ -107,41 +107,18 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-medium text-lg mb-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <i className="fas fa-envelope mt-1 mr-3" style={{ color: COLORS.accent }}></i>
-                <span>{CONTACT_INFO.email}</span>
-              </li>
-              <li className="flex items-start">
-                <i className="fas fa-phone-alt mt-1 mr-3" style={{ color: COLORS.accent }}></i>
-                <span>{CONTACT_INFO.phone}</span>
-              </li>
-              <li className="flex items-start">
-                <i className="fas fa-map-marker-alt mt-1 mr-3" style={{ color: COLORS.accent }}></i>
-                <span>{CONTACT_INFO.address}</span>
-              </li>
-            </ul>
+            <div className="space-y-2">
+              <p><strong>For Inquiry</strong></p>
+              <p><strong>Call/Whatsapp:</strong></p>
+              <p className="font-medium">+254705003641</p>
+            </div>
           </div>
         </div>
         
-        {/* Sell With Us CTA */}
-        <div className="border-t border-white/20 mt-8 pt-8 flex flex-col items-center">
-          <div className="max-w-2xl text-center mb-6">
-            <h3 className="text-xl font-semibold mb-2">Want to sell with us?</h3>
-            <p className="text-white/80 mb-4">
-              Join our marketplace of Kenyan artisans and entrepreneurs. Connect with customers who value authentic Kenyan products.
-            </p>
-            <Link href="/contact?seller=true">
-              <button 
-                className="px-6 py-3 rounded-md font-medium text-white transition-all"
-                style={{ backgroundColor: COLORS.primary }}
-              >
-                Sell With Us
-              </button>
-            </Link>
-          </div>
+        {/* Keep only the copyright line */}
+        <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/60 text-sm">
-            &copy; {new Date().getFullYear()} Asili Kenya. All rights reserved.
+            &copy; {new Date().getFullYear()} Apyson Ventures. All rights reserved.
           </p>
         </div>
       </div>

@@ -49,34 +49,33 @@ const sampleProducts = [
 
 export default function NewArrivals() {
   // Fetch new arrivals from the API
-  const { data: newArrivals, isLoading, error } = useQuery({
-    queryKey: ["/api/products/new-arrivals"],
+  const { data: apiProducts, isLoading, error } = useQuery({
+    queryKey: ["/api/products/new"],
     staleTime: 60000 // 1 minute
   });
-  
-  // Use sample data if the API isn't available yet or there's an error
-  const products = newArrivals || sampleProducts;
+  // Use API products if available, otherwise fall back to sample products
+  const products = Array.isArray(apiProducts) && apiProducts.length > 0 ? apiProducts : sampleProducts;
   
   if (isLoading) {
     return (
-      <section>
+      <section className="bg-white rounded-lg shadow-sm p-6">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="font-display text-2xl" style={{ color: COLORS.secondary }}>
-            New Arrivals
-          </h2>
-          <Link href="/products/new" className="text-sm font-medium" style={{ color: COLORS.primary }}>
-            View All
+          <div>
+            <h2 className="font-display text-3xl" style={{ color: COLORS.secondary }}>
+              New Arrivals
+            </h2>
+            <p className="text-gray-600 mt-1">Fresh additions to our collection</p>
+          </div>
+          <Link href="/category/all" className="px-4 py-2 rounded text-sm font-medium" style={{ color: COLORS.primary, border: `1px solid ${COLORS.primary}` }}>
+            View All Products
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {[...Array(4)].map((_, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm animate-pulse">
-              <div className="h-48 md:h-56 bg-gray-300"></div>
-              <div className="p-4">
-                <div className="h-4 bg-gray-300 rounded w-16 mb-2"></div>
-                <div className="h-5 bg-gray-300 rounded w-full mb-2"></div>
-                <div className="h-5 bg-gray-300 rounded w-20"></div>
-              </div>
+          {[...Array(8)].map((_, index) => (
+            <div key={index} className="animate-pulse">
+              <div className="bg-gray-200 h-48 md:h-56 rounded-md mb-3"></div>
+              <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded w-1/2"></div>
             </div>
           ))}
         </div>
@@ -84,23 +83,26 @@ export default function NewArrivals() {
     );
   }
   
-  if (error) {
-    console.error("Failed to fetch new arrivals:", error);
-  }
-  
   return (
-    <section>
+    <section className="bg-white rounded-lg shadow-sm p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="font-display text-2xl" style={{ color: COLORS.secondary }}>
-          New Arrivals
-        </h2>
-        <Link href="/products/new" className="text-sm font-medium" style={{ color: COLORS.primary }}>
-          View All
+        <div>
+          <h2 className="font-display text-3xl" style={{ color: COLORS.secondary }}>
+            New Arrivals
+          </h2>
+          <p className="text-gray-600 mt-1">Fresh additions to our collection</p>
+        </div>
+        <Link href="/category/all" className="px-4 py-2 rounded text-sm font-medium" style={{ color: COLORS.primary, border: `1px solid ${COLORS.primary}` }}>
+          View All Products
         </Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {Array.isArray(products) && products.map((product: any, index: number) => (
+          <ProductCard 
+            key={product.id} 
+            product={product} 
+            animationDelay={index * 100} 
+          />
         ))}
       </div>
     </section>
