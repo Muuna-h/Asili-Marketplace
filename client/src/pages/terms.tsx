@@ -26,20 +26,20 @@ export default function TermsPage() {
           
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 lead mb-8">
-              These Terms and Conditions govern your use of Asili MarketPlace. Please read these terms carefully before accessing or using our platform.
+              These Terms and Conditions govern your use of KuQuza. Please read these terms carefully before accessing or using our platform.
             </p>
             
             <section className="mb-8">
               <h2 className="text-xl font-semibold mb-3" style={{ color: COLORS.primary }}>1. Acceptance of Terms</h2>
               <p className="text-gray-700 mb-4">
-                By accessing or using Asili MarketPlace, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our platform.
+                By accessing or using KuQuza, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our platform.
               </p>
             </section>
             
             <section className="mb-8">
               <h2 className="text-xl font-semibold mb-3" style={{ color: COLORS.primary }}>2. Products and Services</h2>
               <p className="text-gray-700 mb-4">
-                Asili MarketPlace is an online platform that connects buyers with Kenyan artisans, producers, and sellers. We do not directly sell products but facilitate connections between buyers and sellers.
+                KuQuza is an online platform that connects buyers with Kenyan artisans, producers, and sellers. We do not directly sell products but facilitate connections between buyers and sellers.
               </p>
               <p className="text-gray-700 mb-4">
                 Product descriptions, images, and prices are provided by the sellers. While we strive to ensure accuracy, we do not guarantee that product information is error-free.
@@ -89,17 +89,17 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-xl font-semibold mb-3" style={{ color: COLORS.primary }}>7. Intellectual Property</h2>
               <p className="text-gray-700 mb-4">
-                All content on Asili MarketPlace, including text, graphics, logos, icons, images, audio clips, digital downloads, and software, is the property of Asili MarketPlace or its content suppliers and is protected by Kenyan and international copyright laws.
+                All content on KuQuza, including text, graphics, logos, icons, images, audio clips, digital downloads, and software, is the property of KuQuza or its content suppliers and is protected by Kenyan and international copyright laws.
               </p>
               <p className="text-gray-700 mb-4">
-                You may not reproduce, modify, display, sell, or distribute content from our platform without prior written consent from Asili MarketPlace.
+                You may not reproduce, modify, display, sell, or distribute content from our platform without prior written consent from KuQuza.
               </p>
             </section>
             
             <section className="mb-8">
               <h2 className="text-xl font-semibold mb-3" style={{ color: COLORS.primary }}>8. Limitation of Liability</h2>
               <p className="text-gray-700 mb-4">
-                Asili MarketPlace will not be liable for any damages of any kind arising from the use of this platform, including but not limited to direct, indirect, incidental, punitive, and consequential damages.
+                KuQuza will not be liable for any damages of any kind arising from the use of this platform, including but not limited to direct, indirect, incidental, punitive, and consequential damages.
               </p>
             </section>
             
@@ -120,7 +120,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-xl font-semibold mb-3" style={{ color: COLORS.primary }}>11. Contact Us</h2>
               <p className="text-gray-700 mb-4">
-                If you have any questions about our Terms and Conditions, please contact us at info@asilimarketplace.co.ke.
+                If you have any questions about our Terms and Conditions, please contact us at info@kuquza.co.ke.
               </p>
               <p className="text-gray-700 font-medium">
                 Last updated: April 2025
@@ -132,4 +132,4 @@ export default function TermsPage() {
       <Footer />
     </div>
   );
-} 
+}

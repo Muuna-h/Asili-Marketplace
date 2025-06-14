@@ -14,15 +14,19 @@ export const CATEGORIES = [
 
 // Social Media Links
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/asili.kenya",
-  instagram: "https://instagram.com/asili_kenya",
-  twitter: "https://twitter.com/AsiliKenya",
+  facebook: "https://facebook.com/kuquza",
+
+  instagram: "https://instagram.com/kuquza",
+
+  twitter: "https://twitter.com/KuQuza",
+
   whatsapp: "https://wa.me/+254123456789"
 };
 
 // Contact Information
 export const CONTACT_INFO = {
-  email: "info@asilimarketplace.co.ke",
+  email: "info@kuquza.co.ke",
+
   phone: "+254 705003641",
   address: "Nairobi, Kenya"
 };

@@ -1,5 +1,5 @@
 {
-  "id": "4a9d436e-e9b6-4b3f-8011-3e028a136ac3",
+  "id": "566a8453-9daa-4cd5-b3fb-ce6f2b505fdf",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -121,6 +121,18 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'pending'"
+        },
+        "payment_method": {
+          "name": "payment_method",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mpesa_code": {
+          "name": "mpesa_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",

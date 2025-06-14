@@ -9,7 +9,7 @@ export default function ShoppingBenefitsBanner() {
           <div 
             className="lg:w-2/5 h-64 lg:h-auto bg-cover bg-center"
             style={{ 
-              backgroundImage: `url('https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1000&q=80')`,
+              backgroundImage: `url('/images/whyKuquza.png')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
@@ -20,7 +20,7 @@ export default function ShoppingBenefitsBanner() {
             <h2 
               className="font-display text-2xl md:text-3xl mb-6 text-center lg:text-left"
             >
-              Why Shop With Asili
+              Why Shop With KuQuza
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -33,7 +33,7 @@ export default function ShoppingBenefitsBanner() {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Fast Nationwide Delivery</h3>
-                  <p className="text-sm text-gray-100">We deliver across Kenya within 2-5 business days with real-time tracking.</p>
+                  <p className="text-sm text-gray-100">We deliver across Kenya within 3-7 business days with real-time tracking.</p>
                 </div>
               </div>
               
@@ -47,7 +47,7 @@ export default function ShoppingBenefitsBanner() {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Authentic Quality</h3>
-                  <p className="text-sm text-gray-100">All products are handcrafted by Kenyan artisans with the highest quality standards.</p>
+                  <p className="text-sm text-gray-100">All products are produced locally with the highest quality standards.</p>
                 </div>
               </div>
               
@@ -61,7 +61,7 @@ export default function ShoppingBenefitsBanner() {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Secure Payment Options</h3>
-                  <p className="text-sm text-gray-100">Multiple secure payment methods including M-Pesa, credit cards, and PayPal.</p>
+                  <p className="text-sm text-gray-100">Secure payment methods including M-Pesa.</p>
                 </div>
               </div>
               
@@ -83,4 +83,4 @@ export default function ShoppingBenefitsBanner() {
       </div>
     </section>
   );
-} 
+}

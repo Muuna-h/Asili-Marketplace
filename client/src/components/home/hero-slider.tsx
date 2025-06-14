@@ -15,21 +15,21 @@ const slides: Slide[] = [
   {
     image: "/images/textiles-slide.png",
     title: "Exquisite Kenyan Textiles",
-    description: "Beautiful fabrics and textiles Made by local manufacturers",
+    description: "Get our beautiful textiles and fabrics",
     linkUrl: "/category/textiles",
     linkText: "Explore Textiles"
   },
   {
     image: "/images/food-slide.png",
-    title: "Organic Kenyan Foods & Drinks",
-    description: "Taste the authentic flavors of Kenya with our premium selections",
+    title: "Foods & Drinks",
+    description: "Taste the flavors of our locally produced food products & drinks",
     linkUrl: "/category/foods-drinks",
     linkText: "Discover Flavors"
   },
   {
     image: "/images/crafts-slide.png",
     title: "Authentic Kenyan Products",
-    description: "Discover the beauty of Kenyan Made goods and designs",
+    description: "Discover the authenticity and quality of locally produced goods.",
     linkUrl: "/category/crafts",
     linkText: "Shop Collection"
   }

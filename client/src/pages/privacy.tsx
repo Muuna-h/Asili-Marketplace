@@ -26,7 +26,7 @@ export default function PrivacyPage() {
           
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 lead mb-8">
-              At Asili MarketPlace, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make purchases.
+              At KuQuza, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make purchases.
             </p>
             
             <section className="mb-8">
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
             <section className="mb-8">
               <h2 className="text-xl font-semibold mb-3" style={{ color: COLORS.primary }}>3. Disclosure of Your Information</h2>
               <p className="text-gray-700 mb-4">
-                At Asili MarketPlace, we take your privacy seriously and are committed to maintaining the confidentiality of your personal information. <strong>We do not sell, rent, trade, or otherwise transfer your personal information to outside parties.</strong>
+                At KuQuza, we take your privacy seriously and are committed to maintaining the confidentiality of your personal information. <strong>We do not sell, rent, trade, or otherwise transfer your personal information to outside parties.</strong>
               </p>
               <p className="text-gray-700 mb-4">
                 Your information remains strictly within our organization and is only accessible to authorized personnel who need it to provide you with our services.
@@ -146,7 +146,7 @@ export default function PrivacyPage() {
                 If you have questions or concerns about this Privacy Policy or our practices, please contact us at:
               </p>
               <p className="text-gray-700 mb-4">
-                Email: info@asilimarketplace.co.ke<br />
+                Email: info@kuquza.co.ke<br />
                 Phone: +254 705003641
               </p>
               <p className="text-gray-700 font-medium">
@@ -159,4 +159,4 @@ export default function PrivacyPage() {
       <Footer />
     </div>
   );
-} 
+}

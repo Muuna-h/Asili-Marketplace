@@ -22,7 +22,7 @@ export default function AboutPage() {
             className="font-display text-3xl md:text-4xl mb-6 text-center"
             style={{ color: COLORS.secondary }}
           >
-            About Asili MarketPlace
+            About KuQuza
           </h1>
 
           <section className="mb-8">
@@ -33,7 +33,7 @@ export default function AboutPage() {
               Our Business Concept
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              Asili MarketPlace will be a dedicated e-commerce platform that exclusively connects buyers with sellers, manufacturers, and producers of Kenyan-made products. The platform will showcase a wide range of locally produced goods, including fashion, food, crafts, technology, health and beauty, textiles, Kenyan Plants, juakali products, construction products and furniture. Asili MarketPlace will focus on promoting Kenyan craftsmanship, sustainability, and ethical sourcing, both locally and internationally.
+              KuQuza is a dedicated e-commerce platform that exclusively connects buyers with sellers, manufacturers, and producers of Kenyan-made products. The platform showcases a wide range of locally produced goods, including fashion, food, crafts, technology, health and beauty, textiles, Plants, juakali products, construction products and furniture. KuQuza focuses on promoting Kenyan craftsmanship, sustainability, and ethical sourcing, both locally and internationally.
             </p>
           </section>
 
@@ -63,10 +63,10 @@ export default function AboutPage() {
               Our Commitment
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              At Asili MarketPlace, we are deeply committed to empowering Kenyan artisans, creators, and entrepreneurs. We believe in the power of local talent and the value of authentic, high-quality products. Our platform is built on principles of fairness, transparency, and sustainability.
+              At KuQuza, we are deeply committed to empowering Kenyan artisans, creators, and entrepreneurs. We believe in the power of local talent and the value of authentic, high-quality products. Our platform is built on principles of fairness, transparency, and sustainability.
             </p>
              <p className="text-gray-700 leading-relaxed">
-              We work closely with our sellers to ensure ethical sourcing and production practices. By choosing Asili MarketPlace, you're not just buying a unique product; you're supporting local communities, preserving traditional crafts, and contributing to the growth of the Kenyan economy. We strive to bridge the gap between talented producers and conscious consumers worldwide.
+              We work closely with our sellers to ensure ethical sourcing and production practices. By choosing KuQuza, you're not just buying a product; you're supporting local communities, preserving traditional crafts, and contributing to the growth of the Kenyan economy. We strive to bridge the gap between talented producers and conscious consumers.
             </p>
           </section> 
 
@@ -93,4 +93,4 @@ export default function AboutPage() {
       <Footer />
     </div>
   );
-} 
+}

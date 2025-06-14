@@ -8,10 +8,10 @@ dotenv.config();
 
 // Define the categories directly in the script
 const initialCategories = [
-  { name: "Fashion", slug: "fashion" },
-  { name: "Foods & Drinks", slug: "foods-drinks" },
-  { name: "Crafts", slug: "crafts" },
-  { name: "Gifts", slug: "gifts" },
+  { name: "Fashion", slug: "fashion", featured: true },
+  { name: "Foods & Drinks", slug: "foods-drinks", featured: true },
+  { name: "Crafts", slug: "crafts", featured: true },
+  { name: "Gifts", slug: "gifts", featured: true },
   { name: "Technology", slug: "technology" },
   { name: "Health & Beauty", slug: "health-beauty" },
   { name: "Furniture", slug: "furniture" },
@@ -179,4 +179,4 @@ async function seedDatabase() {
   // await db.end(); // Or specific method for your driver if not neon/serverless
 }
 
-seedDatabase(); 
+seedDatabase();

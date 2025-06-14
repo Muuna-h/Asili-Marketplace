@@ -25,7 +25,7 @@ function AdminDashboardPage() {
           <h1 className="text-2xl font-semibold" style={{ color: COLORS.secondary }}>
             Dashboard
           </h1>
-          <p className="text-gray-500">Welcome to Asili Kenya admin dashboard.</p>
+          <p className="text-gray-500">Welcome to KuQuza admin dashboard.</p>
         </div>
         
         <DashboardStats />

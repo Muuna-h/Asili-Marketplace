@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div>
-            <h2 className="font-display font-bold text-2xl mb-4">ASILI MARKETPLACE</h2>
+            <h2 className="font-display font-bold text-2xl mb-4">KUQUZA</h2>
             <p className="text-white/80 mb-6">Connecting you to authentic Kenyan Product.</p>
             <div className="flex space-x-4">
               <a 
@@ -99,6 +99,11 @@ export default function Footer() {
               <li>
                 <Link href="/privacy" className="text-white/80 hover:text-white transition">
                   Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/sitemap" className="text-white/80 hover:text-white transition">
+                  Site Map
                 </Link>
               </li>
             </ul>

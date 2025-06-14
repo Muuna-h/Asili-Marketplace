@@ -15,10 +15,20 @@ export default function AdminSidebar() {
       label: "Products", 
       path: "/admin/products" 
     },
-    { 
-      icon: "fas fa-shopping-bag", 
-      label: "Orders", 
-      path: "/admin/orders" 
+    {
+      icon: "fas fa-shopping-bag",
+      label: "Orders",
+      path: "/admin/orders"
+    },
+    {
+      icon: "fas fa-tags",
+      label: "Categories",
+      path: "/admin/categories"
+    },
+    {
+      icon: "fas fa-truck",
+      label: "Delivery Regions",
+      path: "/admin/delivery-regions"
     },
     {
       icon: "fas fa-percentage",

@@ -61,12 +61,12 @@ export default function Header() {
               <Link href="/" className="inline-flex items-center">
                 <img 
                   src="/images/logo.png" 
-                  alt="Asili Marketplace Logo" 
+                  alt="KuQuza Logo" 
                   className="h-12 md:h-14 w-auto mr-3"
                 />
                 <div>
                   <h1 className="font-display font-bold text-2xl md:text-3xl" style={{ color: COLORS.primary }}>
-                    ASILI MARKETPLACE
+                    KUQUZA
                   </h1>
                   <p className="text-sm font-medium" style={{ color: COLORS.secondary }}>
                     For Kenya from Kenya

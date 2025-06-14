@@ -32,7 +32,7 @@ export default function ContactPage() {
     defaultValues: {
       name: "",
       email: "",
-      subject: fromSellerCTA ? "I want to sell on Asili Kenya" : "",
+      subject: fromSellerCTA ? "I want to sell on KuQuza" : "",
       message: "",
       isSeller: fromSellerCTA,
     },
@@ -68,7 +68,7 @@ export default function ContactPage() {
               Sell With Us
             </h2>
             <p className="mb-3">
-              Thank you for your interest in joining Asili Kenya as a seller! We're excited to connect with artisans and entrepreneurs who share our passion for authentic Kenyan products.
+              Thank you for your interest in joining KuQuza as a seller! We're excited to connect with artisans and entrepreneurs who share our passion for authentic Kenyan products.
             </p>
             <p className="mb-3">
               Please fill out the form below, and our seller support team will reach out to you with more information about the onboarding process.
@@ -86,7 +86,7 @@ export default function ContactPage() {
             
             {showSellerInfo && (
               <div className="mt-4 p-4 rounded-md bg-white/30">
-                <h3 className="text-lg font-medium mb-2">As a seller on Asili Kenya, you'll get:</h3>
+                <h3 className="text-lg font-medium mb-2">As a seller on KuQuza, you'll get:</h3>
                 <ul className="list-disc pl-5 space-y-1">
                   <li>Access to our growing customer base</li>
                   <li>Dedicated seller dashboard to manage your products</li>

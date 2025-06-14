@@ -11,9 +11,9 @@ export default function Banner() {
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 p-8 md:p-12 flex items-center">
           <div className="text-white max-w-md">
-            <h2 className="font-display text-2xl md:text-3xl mb-4">Welcome to Asili MarketPlace</h2>
+            <h2 className="font-display text-2xl md:text-3xl mb-4">Welcome to KuQuza</h2>
             <p className="mb-6">
-              Discover authentic Kenyan crafts, textiles, and more from professional Manufacturers across the country.
+              Discover authentic and quality Kenyan products from local producers across the country.
             </p>
             <Link href="/category/all">
               <Button 
@@ -28,7 +28,7 @@ export default function Banner() {
         <div 
           className="md:w-1/2 h-80 md:h-auto bg-cover bg-center"
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1592892111425-15e04305f961?auto=format&fit=crop&w=1000&q=80')`,
+            backgroundImage: `url('/images/welcome-banner.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}

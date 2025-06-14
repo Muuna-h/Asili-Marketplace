@@ -339,9 +339,8 @@ export default function CheckoutForm() {
               </div>
               <p className="text-center text-gray-700 mb-4">Complete your payment via Lipa Na M-Pesa:</p>
               <div className="space-y-3 text-base text-center">
-                <p className="text-gray-800"><strong>Paybill:</strong> <span className="font-semibold" style={{ color: COLORS.primary }}>714888</span></p>
-                <p className="text-gray-800"><strong>A/c:</strong> <span className="font-semibold" style={{ color: COLORS.primary }}>302019</span></p>
-                <p className="text-gray-800"><strong>Name:</strong> <span className="font-semibold">Francis Munyaka</span></p>
+                <p className="text-gray-800"><strong>Till no:</strong> <span className="font-semibold" style={{ color: COLORS.primary }}>3587888</span></p>
+                <p className="text-gray-800"><strong>Name:</strong> <span className="font-semibold">KUQUZA VENTURES</span></p>
                 <p className="mt-4 text-gray-800">For support, Call/Whatsapp:</p>
                 <p className="font-semibold text-xl text-gray-900">+254705003641</p>
               </div>

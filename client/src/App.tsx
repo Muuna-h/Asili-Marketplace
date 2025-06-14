@@ -8,6 +8,7 @@ import { AdminAuthProvider } from "@/hooks/use-admin-auth";
 import HomePage from "@/pages/home";
 import ProductPage from "@/pages/product";
 import CategoryPage from "@/pages/category";
+import CategoriesPage from "@/pages/categories";
 import CheckoutPage from "@/pages/checkout";
 import ConfirmationPage from "@/pages/confirmation";
 import ContactPage from "@/pages/contact";
@@ -16,6 +17,7 @@ import AboutPage from "@/pages/about";
 import TermsPage from "@/pages/terms";
 import PrivacyPage from "@/pages/privacy";
 import PromotionsPage from "@/pages/promotions";
+import SitemapPage from "@/pages/sitemap";
 
 // Admin pages
 import AdminLoginPage from "@/pages/admin/login";
@@ -36,6 +38,7 @@ function Router() {
       <Route path="/" component={HomePage} />
       <Route path="/product/:slug" component={ProductPage} />
       <Route path="/category/:slug" component={CategoryPage} />
+      <Route path="/categories" component={CategoriesPage} />
       <Route path="/checkout" component={CheckoutPage} />
       <Route path="/confirmation/:orderId" component={ConfirmationPage} />
       <Route path="/contact" component={ContactPage} />
@@ -43,6 +46,7 @@ function Router() {
       <Route path="/terms" component={TermsPage} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/promotions" component={PromotionsPage} />
+      <Route path="/sitemap" component={SitemapPage} />
       
       {/* Admin Routes */}
       <Route path="/admin" component={AdminLoginPage} />
@@ -55,7 +59,7 @@ function Router() {
       <Route path="/admin/categories" component={AdminCategoriesPage} />
       <Route path="/admin/categories/add" component={AdminAddCategoryPage} />
       <Route path="/admin/categories/edit/:id" component={AdminEditCategoryPage} />
-      
+
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

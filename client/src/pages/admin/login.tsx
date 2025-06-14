@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
         <CardHeader className="text-center">
           <div className="flex flex-col items-center space-y-2 mb-2">
             <h1 className="font-display font-bold text-2xl" style={{ color: COLORS.primary }}>
-              ASILI KENYA
+              KUQUZA
             </h1>
             <span className="text-sm font-medium py-1 px-2 rounded" style={{ backgroundColor: COLORS.secondary, color: 'white' }}>
               Admin Panel

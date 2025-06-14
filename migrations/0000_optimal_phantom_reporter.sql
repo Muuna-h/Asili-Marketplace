@@ -18,6 +18,8 @@ CREATE TABLE "orders" (
 	"items" jsonb NOT NULL,
 	"total" double precision NOT NULL,
 	"status" text DEFAULT 'pending' NOT NULL,
+	"payment_method" text NOT NULL,
+	"mpesa_code" text,
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint

@@ -128,3 +128,10 @@ export const productsRelations = relations(products, ({ one }) => ({
 export const categoriesRelations = relations(categories, ({ many }) => ({
 	products: many(products),
 }));
+
+// Session table for connect-pg-simple
+export const sessions = pgTable("session", {
+  sid: text("sid").primaryKey().notNull(),
+  sess: jsonb("sess").notNull(),
+  expire: timestamp("expire").notNull(),
+});
