@@ -116,4 +116,4 @@ app.get('/test-db', async (req, res) => {
     log(`serving on port ${PORT}`);
   });
 })();
-export default app;
+export default app; // for Vercel
