@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { STOCK_IMAGES, COLORS } from "@/lib/constants";
 
-// Sample data to use if the API isn't available yet
+// Fallback sample data
 const sampleCategories = [
   {
     id: 1,
@@ -31,15 +31,22 @@ const sampleCategories = [
 ];
 
 export default function FeaturedCategories() {
-  // Fetch featured categories from the API
-  const { data: featuredCategories, isLoading, error } = useQuery({
-    queryKey: ["/api/categories/featured"],
-    staleTime: 60000 // 1 minute
+  const {
+    data: featuredCategories,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["featuredCategories"],
+    queryFn: async () => {
+      const res = await fetch("/api/categories/featured");
+      if (!res.ok) throw new Error("Failed to fetch");
+      return res.json();
+    },
+    staleTime: 60000,
   });
-  
-  // Use sample data if the API isn't available yet or there's an error
+
   const categories = featuredCategories || sampleCategories;
-  
+
   if (isLoading) {
     return (
       <section>
@@ -64,11 +71,11 @@ export default function FeaturedCategories() {
       </section>
     );
   }
-  
+
   if (error) {
     console.error("Failed to fetch featured categories:", error);
   }
-  
+
   return (
     <section>
       <div className="flex justify-between items-center mb-6">
