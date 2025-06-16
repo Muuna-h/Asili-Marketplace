@@ -3,8 +3,8 @@
     "outputDirectory": "dist/public",
     "routes": [
       {
-        "src": "/api/(.*)",
-        "dest": "server/index.ts"
+        "src": "/(.*)",
+        "dest": "/"
       },
       {
         "src": "/(.*)",
