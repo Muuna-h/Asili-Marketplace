@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import ProductCard from "@/components/products/product-card";
 import { COLORS, STOCK_IMAGES } from "@/lib/constants";
+import { supabase } from "@/lib/supabase";
 
 // Sample data to use if the API isn't available yet
 const sampleProducts = [
@@ -50,7 +51,18 @@ const sampleProducts = [
 export default function FeaturedProducts() {
   // Fetch featured products from the API
   const { data: products = [], isLoading } = useQuery({
-    queryKey: ["/api/products/featured"],
+    queryKey: ["featuredProducts"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('featured', true);
+
+      if (error) {
+        throw error;
+      }
+      return data;
+    },
     staleTime: 60000 // 1 minute
   });
   

@@ -111,5 +111,9 @@ app.get('/test-db', async (req, res) => {
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    log(`serving on port ${PORT}`);
+  });
 })();
 export default app; // for Vercel

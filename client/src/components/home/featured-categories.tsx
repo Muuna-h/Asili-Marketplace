@@ -30,6 +30,8 @@ const sampleCategories = [
   }
 ];
 
+import { supabase } from "@/lib/supabase"; // Assuming @/lib/supabase resolves to client/src/lib/supabase.ts
+
 export default function FeaturedCategories() {
   const {
     data: featuredCategories,
@@ -38,9 +40,15 @@ export default function FeaturedCategories() {
   } = useQuery({
     queryKey: ["featuredCategories"],
     queryFn: async () => {
-      const res = await fetch("/api/categories/featured");
-      if (!res.ok) throw new Error("Failed to fetch");
-      return res.json();
+      const { data, error } = await supabase
+        .from('categories') // 'categories' is your table name in Supabase
+        .select('*')
+        .eq('featured', true); // Filter for featured categories
+
+      if (error) {
+        throw error;
+      }
+      return data;
     },
     staleTime: 60000,
   });
