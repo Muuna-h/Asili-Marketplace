@@ -77,12 +77,12 @@ export default function CheckoutForm() {
       const mpesaCodeToSend = data.paymentMethod === 'mpesa' ? data.mpesaCode : undefined;
 
       const orderData = {
-        fullName: data.fullName,
+        full_name: data.fullName,
         phone: data.phone,
         address: data.address,
         notes: data.notes,
-        paymentMethod: data.paymentMethod,
-        mpesaCode: mpesaCodeToSend,
+        payment_method: data.paymentMethod,
+        mpesa_code: mpesaCodeToSend,
         items: items,
         total: total,
         status: "pending"
