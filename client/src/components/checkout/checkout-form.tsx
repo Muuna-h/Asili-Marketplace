@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { apiRequest } from "@/lib/queryClient";
+import { supabase } from "@/lib/supabase"; // Add this import
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -87,12 +88,20 @@ export default function CheckoutForm() {
         status: "pending"
       };
       
-      const response = await apiRequest("POST", "/api/orders", orderData);
-      const newOrder = await response.json();
-      
+      // Replace apiRequest with Supabase client call
+      const { data: newOrder, error } = await supabase
+        .from('orders')
+        .insert([orderData])
+        .select();
+
+      if (error) {
+        throw error;
+      }
+
       clearCart();
       
-      navigate(`/confirmation/${newOrder.id}`);
+      // Assuming newOrder is an array and we need the first element
+      navigate(`/confirmation/${newOrder[0].id}`);
     } catch (error) {
       console.error("Error submitting order:", error);
       toast({
