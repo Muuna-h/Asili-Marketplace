@@ -4,6 +4,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { useQuery } from '@tanstack/react-query';
 import { STOCK_IMAGES, COLORS } from '@/lib/constants';
+import { supabase } from '@/lib/supabase'; // Import supabase client
 
 const sampleCategories = [
   { id: 1, name: "Fashion", slug: "fashion", image: STOCK_IMAGES.handcrafted },
@@ -20,7 +21,12 @@ const sampleCategories = [
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error } = useQuery({
-    queryKey: ["/api/categories"],
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('categories').select('*');
+      if (error) throw error;
+      return data;
+    },
     staleTime: 60000,
   });
 

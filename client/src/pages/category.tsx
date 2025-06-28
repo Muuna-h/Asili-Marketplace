@@ -8,6 +8,7 @@ import ProductCard from "@/components/products/product-card";
 import { Button } from "@/components/ui/button";
 import { COLORS, CATEGORIES } from "@/lib/constants";
 import type { Category, Product } from "@shared/schema";
+import { supabase } from '@/lib/supabase'; // Import supabase client
 
 interface CategoryPageProps {
   params: {
@@ -39,17 +40,33 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   
   // Fetch category details from API if not a search and not "all" category
   const { data: categoryDetails } = useQuery<Category>({
-    queryKey: [`/api/categories/${slug}`],
+    queryKey: [`categories`, slug],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('categories').select('*').eq('slug', slug).single();
+      if (error) throw error;
+      return data;
+    },
     enabled: !isSearch && !isAllProducts && !!slug
   });
   
   // Fetch products based on category, search, or all products
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: isSearch 
-      ? [`/api/products/search?q=${searchQuery}`]
+      ? [`products`, 'search', searchQuery]
       : isAllProducts
-        ? ['/api/products']
-        : [`/api/products/category/${categoryDetails?.id || 0}`],
+        ? ['products', 'all']
+        : [`products`, 'category', categoryDetails?.id || 0],
+    queryFn: async () => {
+      let query = supabase.from('products').select('*');
+      if (isSearch) {
+        query = query.ilike('name', `%${searchQuery}%`);
+      } else if (!isAllProducts && categoryDetails?.id) {
+        query = query.eq('category_id', categoryDetails.id);
+      }
+      const { data, error } = await query;
+      if (error) throw error;
+      return data;
+    },
     enabled: !!(isSearch || isAllProducts || categoryDetails?.id)
   });
   
