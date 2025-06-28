@@ -101,11 +101,6 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </li>
-              <li>
-                <Link href="/sitemap" className="text-white/80 hover:text-white transition">
-                  Site Map
-                </Link>
-              </li>
             </ul>
           </div>
           
@@ -123,7 +118,7 @@ export default function Footer() {
         {/* Keep only the copyright line */}
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/60 text-sm">
-            &copy; {new Date().getFullYear()} Apyson Ventures. All rights reserved.
+            &copy; {new Date().getFullYear()} KUQUZA Ventures. All rights reserved.
           </p>
         </div>
       </div>

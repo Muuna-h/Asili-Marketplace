@@ -8,6 +8,7 @@ import ProductCard from "@/components/products/product-card";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 import { Button } from "@/components/ui/button";
 import { COLORS, STOCK_IMAGES } from "@/lib/constants";
+import { supabase } from '@/lib/supabase'; // Import supabase client
 
 interface Promotion {
   id: number;
@@ -39,7 +40,7 @@ interface Product {
 const samplePromotions: Promotion[] = [
   {
     id: 1,
-    title: "20% Off All Handcrafted Items",
+    title: "20% Off All Gift Items",
     description: "Exclusive discount on our entire collection of handcrafted Kenyan products",
     image: "https://images.unsplash.com/photo-1607707972895-7f994d8c2f3b?auto=format&fit=crop&w=1000&q=80",
     endDate: "2023-12-31",
@@ -50,8 +51,8 @@ const samplePromotions: Promotion[] = [
     id: 2, 
     title: "Buy 2 Get 1 Free on Textiles",
     description: "Purchase any two textile products and get a third one free",
-    image: "https://images.unsplash.com/photo-1592892111425-15e04305f961?auto=format&fit=crop&w=1000&q=80",
-    endDate: "2023-11-30",
+    image: `url('/images/welcome-banner.png')`,
+    endDate: "2025-06-30",
     active: true
   }
 ];
@@ -109,13 +110,23 @@ export default function PromotionsPage() {
   
   // Fetch promotions from the API (using sample data for now)
   const { data: promotions = samplePromotions } = useQuery<Promotion[]>({
-    queryKey: ["/api/promotions"],
+    queryKey: ["promotions"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('promotions').select('*');
+      if (error) throw error;
+      return data;
+    },
     staleTime: 60000 // 1 minute
   });
   
   // Fetch promotion products
-  const { data: promotionProducts = samplePromotionProducts } = useQuery<Product[]>({
-    queryKey: ["/api/products/promotions", activePromotionId],
+  const { data: promotionProducts = samplePromotionProducts } = useQuery<Product[]>({ // Use sample data as fallback
+    queryKey: ["products", "promotions", activePromotionId],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('products').select('*, category:categories(*)').eq('promotion_id', activePromotionId);
+      if (error) throw error;
+      return data;
+    },
     staleTime: 60000, // 1 minute
     enabled: activePromotionId !== null
   });
@@ -222,4 +233,4 @@ export default function PromotionsPage() {
       <Footer />
     </div>
   );
-} 
+}

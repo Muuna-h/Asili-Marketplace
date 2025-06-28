@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { CATEGORIES, COLORS } from "@/lib/constants";
 import { Separator } from "@/components/ui/separator";
+import { supabase } from '@/lib/supabase'; // Import supabase client
 
 export default function CategorySidebar() {
   const [location] = useLocation();
@@ -10,7 +11,12 @@ export default function CategorySidebar() {
   
   // Fetch categories from the API
   const { data: apiCategories, isLoading } = useQuery({
-    queryKey: ["/api/categories"],
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('categories').select('*');
+      if (error) throw error;
+      return data;
+    },
     staleTime: 60000 // 1 minute
   });
   
@@ -150,7 +156,7 @@ export default function CategorySidebar() {
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-primary" viewBox="0 0 16 16">
             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
           </svg>
-          <span>support@kuquza.co.ke</span>
+          <span>kuquza@gmail.com</span>
         </div>
         <div className="flex items-center space-x-2 mb-3 text-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="text-primary" viewBox="0 0 16 16">

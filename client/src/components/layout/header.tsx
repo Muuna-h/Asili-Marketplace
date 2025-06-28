@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { COLORS } from "@/lib/constants";
 import CartSidebar from "./cart-sidebar";
-import { apiRequest } from "@/lib/queryClient";
+import { supabase } from '@/lib/supabase'; // Import supabase client
 import { useQuery } from "@tanstack/react-query";
 
 export default function Header() {
@@ -22,10 +22,11 @@ export default function Header() {
   
   // Fetch categories for the dropdown menu
   const { data: categories } = useQuery({
-    queryKey: ['/api/categories'],
+    queryKey: ['categories'],
     queryFn: async () => {
-      const res = await apiRequest('GET', '/api/categories');
-      return res.json();
+      const { data, error } = await supabase.from('categories').select('*');
+      if (error) throw error;
+      return data;
     }
   });
 

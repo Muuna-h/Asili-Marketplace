@@ -17,7 +17,6 @@ import AboutPage from "@/pages/about";
 import TermsPage from "@/pages/terms";
 import PrivacyPage from "@/pages/privacy";
 import PromotionsPage from "@/pages/promotions";
-import SitemapPage from "@/pages/sitemap";
 
 // Admin pages
 import AdminLoginPage from "@/pages/admin/login";
@@ -46,7 +45,6 @@ function Router() {
       <Route path="/terms" component={TermsPage} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/promotions" component={PromotionsPage} />
-      <Route path="/sitemap" component={SitemapPage} />
       
       {/* Admin Routes */}
       <Route path="/admin" component={AdminLoginPage} />

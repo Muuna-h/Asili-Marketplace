@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ✅ Static Pages -->
+  <url><loc>https://kuquza.co.ke/</loc></url>
+  <url><loc>https://kuquza.co.ke/categories</loc></url>
+  <url><loc>https://kuquza.co.ke/contact</loc></url>
+  <url><loc>https://kuquza.co.ke/about</loc></url>
+  <url><loc>https://kuquza.co.ke/terms</loc></url>
+  <url><loc>https://kuquza.co.ke/privacy</loc></url>
+  <url><loc>https://kuquza.co.ke/promotions</loc></url>
+
+  <!-- 🔒 Not included: /checkout, /confirmation, /admin/... (private/sensitive) -->
+
+  <!-- 🛍️ Example Dynamic Product Pages -->
+  <url><loc>https://kuquza.co.ke/product/ankara-laptop-backpack</loc></url>
+  <url><loc>https://kuquza.co.ke/product/succulents-value-pack</loc></url>
+
+  <!-- 🗂️ Example Dynamic Category Pages -->
+  <url><loc>https://kuquza.co.ke/category/fashion</loc></url>
+  <url><loc>https://kuquza.co.ke/category/plants</loc></url>
+
+</urlset>

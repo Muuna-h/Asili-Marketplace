@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { COLORS } from "@/lib/constants";
 import type { ProductWithCategory } from "@shared/schema";
+import { supabase } from '@/lib/supabase'; // Import supabase client
 
 interface ProductDetailProps {
   slug: string;
@@ -19,7 +20,16 @@ export default function ProductDetail({ slug }: ProductDetailProps) {
   
   // Fetch product details from the API
   const { data: product, isLoading, error } = useQuery<ProductWithCategory>({
-    queryKey: [`/api/products/${slug}`]
+    queryKey: [`products`, slug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*, category:categories(*)') // Select product and join with category
+        .eq('slug', slug)
+        .single();
+      if (error) throw error;
+      return data;
+    }
   });
   
   const decreaseQuantity = () => {

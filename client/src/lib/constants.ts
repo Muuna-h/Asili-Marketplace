@@ -20,12 +20,12 @@ export const SOCIAL_LINKS = {
 
   twitter: "https://twitter.com/KuQuza",
 
-  whatsapp: "https://wa.me/+254123456789"
+  whatsapp: "https://wa.me/+254705003641"
 };
 
 // Contact Information
 export const CONTACT_INFO = {
-  email: "info@kuquza.co.ke",
+  email: "kuquza@gmail.com",
 
   phone: "+254 705003641",
   address: "Nairobi, Kenya"
